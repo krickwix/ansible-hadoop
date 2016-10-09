@@ -14,16 +14,26 @@
       yum: name='cloudera-manager-agent' state=removed
 
 - name: "drop scm mysql mysql db on master nodes"
-  hosts: master-nodes
+  hosts: cm_node
   any_errors_fatal: true
   become: yes
   pre_tasks:
     - name: "Show cluster info"
       debug: var="{{ hostvars[inventory_hostname] }}"
       when: debug
+    - name: "include mysql vars"
+      include_vars: roles/cloudera-mysql/vars/mysql_vars.yml
   tasks:
     - name: 'remove scm db from master nodes'
-      mysql_db: name='scm' state=absent
+      mysql_db: name={{ item }} state=absent
+      with_items:
+        - db_names
+
+    - name: "stop mariadb"
+      service: name=mariadb state=stopped
+
+    - name: "remove dirs"
+      file: path=/var/lib/mysql/* state=absent
 
 - name: "remove cloudera-mngr role to cm-node group"
   hosts: cm_node
@@ -38,3 +48,28 @@
       with_items:
         - cloudera-manager-server
         - cloudera-manager-daemons
+
+- name: "kill procs"
+  hosts: hadoop-cluster
+  become: yes
+  tasks:
+    - name: "kill procs"
+      action: shell /usr/bin/pkill -IO 'cloudera' || true
+      ignore_errors: True
+
+- name: "cleanup datanode  dirs"
+  hosts: hadoop-cluster
+  become: yes
+  tasks:
+    - name: "remove dirs"
+      file: path=/hadoop/* state=absent
+
+- name: "cleanup masternode  dirs"
+  hosts: hadoop-cluster
+  become: yes
+  tasks:
+    - name: "remove ms dirs"
+      file: path=/hadoop/ms/* state=absent
+
+    - name: "remove nn dirs"
+      file: path=/hadoop/nn/* state=absent

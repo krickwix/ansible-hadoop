@@ -18,11 +18,10 @@
     - ambari-server
   when: ansible_os_family == "Debian"
 
-- meta: flush_handlers
+- include: unbound-dns.yml
+  when: use_dns
 
-- name: Include spark_stack.yml
-  include: spark_stack.yml
-  when: spark_stack and ansible_os_family == "RedHat" and ansible_distribution_major_version == "7"
+- meta: flush_handlers
 
 - include: arcadia.yml
   when: arcadia and ansible_os_family == "RedHat" and ansible_distribution_major_version == "6"
@@ -31,7 +30,7 @@
   shell: /usr/sbin/ambari-server setup -s
 
 - name: Make sure ambari-server is running
-  service: name=ambari-server state=started enabled=yes
+  command: service ambari-server restart
 
 - name: Waiting for ambari-server to start listening on port 8080
   wait_for: host={{ ansible_nodename }} port=8080
