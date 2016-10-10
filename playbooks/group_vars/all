@@ -33,3 +33,4 @@ hdfs:
 
 # set to true to show host variables
 debug: true
+use_dns: false
