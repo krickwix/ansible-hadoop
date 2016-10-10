@@ -24,7 +24,7 @@ custom_blueprint_template: blueprint-custom.j2
 custom_cluster_template: cluster-template-custom.j2
 custom_repo: true
 custom_repo_url: 'http://10.60.17.100/fandrieu/mirrors/hdp/centos7/'
-custom_repo_target: 'api/v1/stacks/HDP/versions/2.5/operating_systems/redhat7/repositories/HDP-2.5'
+custom_repo_target: 'HDP-2.5.0.0/'
 
 hdfs:
   dfs_replication: 3
