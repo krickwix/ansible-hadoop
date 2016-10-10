@@ -18,10 +18,19 @@
   template: src=hdprepo.j2 dest=/tmp/hdprepo mode=0644
   when: custom_repo
 
+- name: Upload HDP Utils Repo
+  template: src=hdputilsrepo.j2 dest=/tmp/hdputilsrepo mode=0644
+  when: custom_utils_repo
+
 - name: Slurp the hdp repo
   slurp: src=/tmp/hdprepo
   register: hdprepo
   when: custom_repo
+
+- name: Slurp the hdp utils repo
+  slurp: src=/tmp/hdputilsrepo
+  register: hdputilsrepo
+  when: custom_utils_repo
 
 - name: Modify repo base_url
   uri: url=http://{{ ansible_nodename }}:8080/{{ custom_repo_target }}
@@ -34,6 +43,18 @@
        body_format=raw
        status_code=200,201,202
   when: custom_repo
+
+- name: Modify utils repo base_url
+  uri: url=http://{{ ansible_nodename }}:8080/{{ custom_utils_repo_target }}
+       method=PUT
+       force_basic_auth=yes
+       user=admin
+       password=admin
+       HEADER_X-Requested-By="ambari"
+       body=" {{ hdputilsrepo.content | b64decode }}"
+       body_format=raw
+       status_code=200,201,202
+  when: custom_utils_repo
 
 - name: Upload the alert_targets payload
   template: src=alert_targets.j2 dest=/tmp/alert_targets mode=0644
