@@ -7,7 +7,7 @@ admin_password: 'admin'
 services_password: 'AsdQwe123'
 alerts_contact: 'root@localhost.localdomain'
 wait: true
-wait_timeout: 1800   # 30 minutes
+wait_timeout: 7200   # 30 minutes
 
 install_spark: true
 install_zeppelin: false # >= HDP2_5
@@ -23,9 +23,9 @@ configure_firewall: false
 custom_blueprint: false
 custom_blueprint_template: blueprint-custom.j2
 custom_cluster_template: cluster-template-custom.j2
-custom_repo: true
-custom_repo_url: 'http://10.60.17.100/fandrieu/mirrors/hdp/centos7/'
-custom_repo_target: 'HDP-2.5.0.0'
+custom_repo: false
+custom_repo_url: 'http://public-repo-1.hortonworks.com/HDP-LABS/Projects/Erie-Preview/2.5.0.0-7/centos7/'
+custom_repo_target: 'api/v1/stacks/HDP/versions/2.5/operating_systems/redhat7/repositories/HDP-2.5'
 
 #requires HDP2.3 RHEL/CentOS 6
 #available in 2 and 3 masternode blueprints
@@ -43,4 +43,3 @@ hdfs:
 
 # set to true to show host variables
 debug: false
-use_dns: false
