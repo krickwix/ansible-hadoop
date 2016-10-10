@@ -23,7 +23,7 @@ configure_firewall: false
 custom_blueprint: false
 custom_blueprint_template: blueprint-custom.j2
 custom_cluster_template: cluster-template-custom.j2
-custom_repo: false
+custom_repo: true
 custom_repo_url: 'http://10.60.17.100/fandrieu/mirrors/hdp/centos7/'
 custom_repo_target: 'HDP-2.5.0.0'
 
