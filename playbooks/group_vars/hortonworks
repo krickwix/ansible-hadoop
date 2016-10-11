@@ -28,7 +28,7 @@ custom_repo_url: 'http://10.60.17.100/fandrieu/mirrors/hdp/centos7/HDP-2.5.0.0'
 custom_repo_target: 'api/v1/stacks/HDP/versions/2.5/operating_systems/redhat7/repositories/HDP-2.5'
 custom_utils_repo: true
 custom_utils_repo_url: 'http://10.60.17.100/fandrieu/mirrors/hdp/centos7/HDP-UTILS-1.1.0.21'
-custom_utils_repo_target: 'api/v1/stacks/HDP/versions/2.5/operating_systems/redhat7/repositories/HDP-UTILS-1.1.0.20'
+custom_utils_repo_target: 'api/v1/stacks/HDP/versions/2.5/operating_systems/redhat7/repositories/HDP-UTILS-1.1.0.21'
 
 #requires HDP2.3 RHEL/CentOS 6
 #available in 2 and 3 masternode blueprints
