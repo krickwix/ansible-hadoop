@@ -2,7 +2,7 @@
 cluster_name: 'hadoopPOC'
 #valid hdp/cdh
 distro: 'hdp'
-use_dns: true
+use_dns: false
 dnsfwd: ['173.203.4.8', '173.203.4.9']
 dnsres: ['173.203.4.8', '173.203.4.9']
 
@@ -14,6 +14,13 @@ cloud_config:
   ssh:
     keyname: 'hadoop-ssh-key'
     keyfile: '~/.ssh/id_rsa.pub'
+
+# If deployment is in Microsoft Azure
+# This assumes that all the vm deployments are done thru Azure tools outside
+# of this ansible setup and the bootstrap and Hortonworks setup are done using
+# ansible-hadoop.
+# NOTE: This skips a few steps in bootstrap that are not need by Azure VM's
+azure: false
 
 # set to true to show host variables
 debug: true
