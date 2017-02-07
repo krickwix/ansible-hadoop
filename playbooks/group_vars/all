@@ -1,9 +1,14 @@
 ---
 cluster_name: 'hadoopPOC'
 distro: 'hdp'
+
 hdp_version: '2.5.0'
 admin_password: 'pnda'
 services_password: 'pnda'
+
+use_dns: false
+dnsfwd: ['173.203.4.8', '173.203.4.9']
+dnsres: ['173.203.4.8', '173.203.4.9']
 
 wait: true
 wait_timeout: 1800   # 30 minutes
@@ -30,6 +35,13 @@ hdfs:
   dfs_replication: 3
   failed_volumes_tolerated: 1
   ha_namenode: true
+
+# If deployment is in Microsoft Azure
+# This assumes that all the vm deployments are done thru Azure tools outside
+# of this ansible setup and the bootstrap and Hortonworks setup are done using
+# ansible-hadoop.
+# NOTE: This skips a few steps in bootstrap that are not need by Azure VM's
+azure: false
 
 # set to true to show host variables
 debug: true

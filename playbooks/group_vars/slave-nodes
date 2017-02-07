@@ -1,5 +1,5 @@
 ---
-cluster_interface: 'eth0'
-# bond_interfaces: ['eth4', 'eth6']
-# bond_netmask: '255.255.255.0'
-datanode_disks: ['vdb']
+##############################################################
+# use template file for example references                   #
+# ~/ansible-hadoop/playbooks/group_vars/slave-nodes-templates#
+##############################################################

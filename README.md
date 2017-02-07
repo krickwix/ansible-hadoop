@@ -1,3 +1,5 @@
+[![Build Status](http://104.130.29.12/buildStatus/icon?job=ansible-hadoop)](http://104.130.29.12/job/ansible-hadoop/)
+
 ansible-hadoop
 ---------
 These Ansible playbooks will build a Hadoop cluster.
@@ -13,7 +15,7 @@ See [INSTALL-ENV.md](../master/INSTALL-ENV.md) for installation and build instru
 
 ## [Requirements] (id:requirements)
 
-- Ansible >= 2.0.
+- Ansible == 2.1.3.0 (2.2 is not supported at the moment)
 
 - Expects RHEL/CentOS 6/7 or Ubuntu 14 hosts.
 
