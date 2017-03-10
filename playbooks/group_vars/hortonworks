@@ -11,7 +11,7 @@ wait_timeout: 7200   # 30 minutes
 
 install_spark: true
 install_zeppelin: false # >= HDP2_5
-install_flume: false
+install_flume: true
 install_hbase: true
 install_storm: false
 install_kafka: false

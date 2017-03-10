@@ -2,39 +2,18 @@
 cluster_name: 'hadoopPOC'
 distro: 'hdp'
 
-hdp_version: '2.5.0'
-admin_password: 'pnda'
-services_password: 'pnda'
-
 use_dns: false
-#dnsfwd: ['173.203.4.8', '173.203.4.9']
-#dnsres: ['173.203.4.8', '173.203.4.9']
+dnsfwd: ['173.203.4.8', '173.203.4.9']
+dnsres: ['173.203.4.8', '173.203.4.9']
 
-wait: true
-wait_timeout: 1800   # 30 minutes
-
-install_spark: true
-install_zeppelin: false # >= HDP2_5
-install_flume: false
-install_hbase: true
-install_storm: false
-install_kafka: false
-install_falcon: false
-tachyon_service: false
-
-data_disks_filesystem: xfs
-configure_firewall: false
-custom_blueprint: false
-custom_blueprint_template: blueprint-custom.j2
-custom_cluster_template: cluster-template-custom.j2
-custom_repo: true
-custom_repo_url: 'http://10.60.17.100/fandrieu/mirrors/hdp/centos7/'
-custom_repo_target: 'HDP-2.5.0.0/'
-
-hdfs:
-  dfs_replication: 3
-  failed_volumes_tolerated: 1
-  ha_namenode: true
+cloud_config:
+  rax_credentials_file: '~/.raxpub'
+  rax_region: 'ORD'
+  domain: 'localnet'
+  allowed_external_ips: ['127.0.0.1']
+  ssh:
+    keyname: 'hadoop-ssh-key'
+    keyfile: '~/.ssh/id_rsa.pub'
 
 # If deployment is in Microsoft Azure
 # This assumes that all the vm deployments are done thru Azure tools outside
