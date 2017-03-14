@@ -21,8 +21,8 @@ tachyon_service: false
 data_disks_filesystem: xfs
 configure_firewall: false
 custom_blueprint: false
-custom_blueprint_template: blueprint-custom.j2
-custom_cluster_template: cluster-template-custom.j2
+custom_blueprint_template: blueprint-multi-node-3-masters.j2
+custom_cluster_template: cluster-template-muti-nodes.j2
 custom_repo: true
 custom_repo_url: 'http://10.60.17.100/fandrieu/mirrors/hdp/centos7/HDP-2.5.0.0'
 custom_repo_target: 'api/v1/stacks/HDP/versions/2.5/operating_systems/redhat7/repositories/HDP-2.5'

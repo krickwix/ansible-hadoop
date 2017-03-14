@@ -61,7 +61,7 @@ hadoop_disk: vdb
 #cbs_disks_size: 200
 #cbs_disks_type: 'SATA'
 #hadoop_disk: sdb
-#namenode_disk: sdb
+namenode_disk: vdb
 #masterservices_disk: sdc
 #datanode_disks: ['sdd', 'sde']
 
@@ -76,7 +76,7 @@ hadoop_disk: vdb
 # cloud_nodes_count: 2
 # cloud_image: 'Ubuntu 14.04 LTS (Trusty Tahr) (PVHVM)'
 # cloud_flavor: 'performance2-15'
-# hadoop_disk: xvde
+hadoop_disk: vdb
 
 
 ######################################

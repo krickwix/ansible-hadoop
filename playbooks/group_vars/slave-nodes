@@ -3,3 +3,4 @@
 # use template file for example references                   #
 # ~/ansible-hadoop/playbooks/group_vars/slave-nodes-templates#
 ##############################################################
+datanode_disks: ['vdb']
